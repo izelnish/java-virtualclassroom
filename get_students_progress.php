@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 require_once 'cors.php';
-require_once 'db.php';
+require_once 'db_connect.php';
 
 // Ensure only staff can access this (in a real app, check session/token)
 // For this demo, we assume the frontend handles the "Staff" view visibility

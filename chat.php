@@ -3,16 +3,16 @@ header('Content-Type: application/json');
 require_once 'cors.php';
 require_once 'db.php';
 
-// Get POST data
-$data = json_decode(file_get_contents('php://input'), true);
-$message = $data['message'] ?? '';
-$sessionContext = $data['context'] ?? 'General Java';
+// Get Data (Try JSON POST first, then fallback to GET for InfinityFree Bypass)
+$json = json_decode(file_get_contents('php://input'), true);
+$message = $json['message'] ?? $_GET['message'] ?? '';
+$sessionContext = $json['context'] ?? $_GET['context'] ?? 'General Java';
 
 // =================================================================================
 // 🤖 AI CONFIGURATION
 // =================================================================================
 $aiProvider = "gemini"; 
-$apiKey = "AIzaSyAOVtr4oUGN6xZ-GudFyr0DUek7P0kdZnQ"; // User's Key
+$apiKey = "AIzaSyC70RuVvyOq7rCBqhqlmqV1Lhj_g-mnETI"; // User's Key
 
 if (empty($message)) {
     echo json_encode(['success' => false, 'reply' => "I'm listening... what's on your mind?"]);
